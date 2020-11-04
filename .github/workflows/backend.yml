@@ -39,9 +39,7 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile \
-          --tag ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:${{ env.GITHUB_SHA }} \
           --tag ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:latest
     - name: Publishes the image
       run: |
-        docker push ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:${{ env.GITHUB_SHA }}
         docker push ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:latest
