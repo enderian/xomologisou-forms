@@ -13,6 +13,23 @@ jobs:
       run: |
         npm config set "@fortawesome:registry" https://npm.fontawesome.com/
         npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.FONTAWESOME_PRO_KEY }}
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+    - uses: actions/cache@v2
+      id: yarn-cache
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - uses: actions/cache@v2
+      id: go-cache
+      with:
+        path: ~/go/pkg/mod
+        key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-go-
     - name: Build application
       run: make build
     - name: Login to GitHub Docker Registry
