@@ -19,19 +19,8 @@ export interface FormOptionSet {
   allow_custom: boolean;
 }
 
-export interface FormAdvert {
-  google?: boolean;
-  image?: string;
-  link?: string;
-  height?: number;
-  width?: number;
-  element_id?: string;
-  element_classes?: string;
-}
-
 export interface FormResponse {
   form?: Form;
-  adverts?: Map<string, FormAdvert>;
   facebook_id?: string;
   facebook_name?: string;
   captcha?: string;

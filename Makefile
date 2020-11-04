@@ -9,7 +9,6 @@
 	cd app; yarn install && yarn build:prod
 
 build: .build-alpine-go .build-app
-	docker build --tag xomologisou-forms:latest .
 
 start-app:
 	cd app; yarn start
