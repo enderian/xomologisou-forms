@@ -1,10 +1,12 @@
 xomologisou.gr -  forms
 ===
 
+> You can find the application live at [xomologisou.gr](https://xomologisou.gr)!
+
 ## Introduction
 
-This project is the customer-facing side of the xomologisou a§pp, a popular Greek application
-that handles confesessions for Facebook confession pages.
+This project is the customer-facing side of the xomologisou app, a popular Greek application
+that handles confesessions for Facebook confession pages. :secret:
 
 The managing software is located in a different repo, and will be published at a later time.
 
