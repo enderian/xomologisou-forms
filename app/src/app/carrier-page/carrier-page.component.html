@@ -1,0 +1,46 @@
+<div class="base" *ngIf="response && response.form" [ngClass]="{dark: response.form.dark}">
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+      <h2 [innerText]="response.form.title"></h2>
+      <p class="mb-0" [ngClass]="{'lead': response.form.subtitle.length < 48}" [innerText]="response.form.subtitle"></p>
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="container">
+      <div class="card">
+        <div class="card-header bg-success text-light" *ngIf="christmas">
+          <i class="fas fa-tree-christmas"></i>
+          Η ομάδα του xomologisou.gr σας εύχεται <b class="text-nowrap">Καλά Χριστούγεννα</b> και <b
+          class="text-nowrap">καλό και δημιουργικό 2019</b>!
+        </div>
+        <div class="card-header d-flex">
+          <img alt="..." height="24" class="mr-2" src=""
+               [src]="'https://graph.facebook.com/v3.1/' + response.facebook_id + '/picture?width=128&type=square'">
+          <a [href]="'https://www.facebook.com/' + response.facebook_id" target="_blank"
+             [innerText]="response.facebook_name"></a>
+        </div>
+        <div class="card-body">
+          <div [ngSwitch]="page">
+            <app-form-submit *ngSwitchCase="''" [form]="response.form" [carrier]="carrier"
+                             [facebookName]="response.facebook_name">
+            </app-form-submit>
+            <app-form-success *ngSwitchCase="'success'"></app-form-success>
+            <app-secret-search *ngSwitchCase="'search'" [carrier]="carrier" [form]="response">
+            </app-secret-search>
+            <app-carrier-page-report *ngSwitchCase="'report'" [form]="response">
+            </app-carrier-page-report>
+          </div>
+        </div>
+        <div class="card-footer d-flex">
+          <small *ngIf="response.form.terms">
+            <a class="terms" tabindex (click)="openTerms($event)">Όροι σελίδας</a>
+          </small>
+          <small class="ml-auto xomo">
+            powered by <a href="/" class="xomologisou">xomologisou.gr</a>
+            <img class="ml-2" src="assets/logo-rsm.png" height="18">
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

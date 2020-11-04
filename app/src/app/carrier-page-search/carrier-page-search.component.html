@@ -1,0 +1,47 @@
+<form novalidate (ngSubmit)="onSubmit()" #secretForm>
+  <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+  <div class="form-group">
+    <label for="id">Αναγνωριστικό</label>
+    <input class="form-control" id="id" name="id" [(ngModel)]="id">
+  </div>
+  <div class="form-group" *ngIf="secret">
+    <label for="content" [innerText]="form.form.secret_prompt"></label>
+    <div class="mt-2 border p-3" id="content" [innerHtml]="secret.content | linkify">
+    </div>
+  </div>
+  <div class="form-group" *ngIf="secret && secret.image">
+    <label for="content" [innerText]="form.form.image_prompt"></label>
+    <img class="w-100" [src]="secret.image" alt="image">
+  </div>
+  <div class="form-group" *ngIf="secret">
+    <label class="mr-2">Κατάσταση:</label>
+    <label *ngIf="secret.status == 0">
+      <span class="ml-2">Μη δημοσιευμένο</span>
+    </label>
+    <label class="text-success" *ngIf="secret.status == 1">
+      <span class="ml-2">Δημοσιευμένο</span>
+    </label>
+    <label class="text-danger" *ngIf="secret.status == 2">
+      <span class="ml-2">Διεγραμμένο</span>
+    </label>
+    <div *ngIf="secret && secret.status == 1">
+      <a class="text-light ml-1" [href]="secret.publish_url">
+        <span class="ml-2">Εμφάνιση στο Facebook</span>
+      </a>
+    </div>
+  </div>
+  <div class="bottom">
+    <div class="buttons ml-auto">
+      <button type="button" class="btn btn-dark" (click)="close()">
+        <i class="fas fa-arrow-left"></i>
+      </button>
+      <button type="button" class="btn btn-danger ml-2" *ngIf="secret && secret.deletable"
+              (click)="delete(secret)" [disabled]="api.loading">
+        <i class="fas fa-trash-alt"></i>
+      </button>
+      <button type="submit" class="btn btn-primary ml-2" [disabled]="!id || api.loading">
+        <i class="fas fa-search"></i> Αναζήτηση
+      </button>
+    </div>
+  </div>
+</form>

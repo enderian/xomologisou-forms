@@ -1,0 +1,17 @@
+body {
+  text-align: center;
+  background-color: #060506;
+  color: white;
+}
+
+$form-width: 500px;
+
+.container {
+  max-width: $form-width;
+}
+
+.narya, .narya:hover {
+  padding: 2rem;
+  font-size: 1.5rem;
+  color: #99f6fc;
+}

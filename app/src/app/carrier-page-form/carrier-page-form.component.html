@@ -1,0 +1,43 @@
+<form novalidate (ngSubmit)="submit()">
+  <div class="alert alert-danger" *ngIf="error">{{error}}</div>
+  <div class="form-group">
+    <label for="content" [innerText]="form.secret_prompt"></label>
+    <textarea class="form-control" id="content" name="content"
+              [(ngModel)]="secret.content" [disabled]="api.loading" rows="3" maxlength="2000"></textarea>
+  </div>
+  <div *ngIf="form">
+    <div class="form-group" *ngFor="let id of optionSetsKeys()">
+      <label [innerText]="form.option_sets[id].name"></label>
+      <select *ngIf="!form.option_sets[id].allow_custom" title="select option" class="form-control"
+              [name]="'option-' + id" [(ngModel)]="secret.options[id]" [disabled]="api.loading">
+        <option *ngFor="let option of optionSetKeys(id)"
+                [value]="option" [innerText]="option">
+        </option>
+      </select>
+      <input *ngIf="form.option_sets[id].allow_custom" class="form-control" placeholder=""
+             [name]="'option-' + id" [(ngModel)]="secret.options[id]" [disabled]="api.loading">
+    </div>
+    <div class="form-group" *ngIf="form.accepts_image">
+      <label for="file" [innerText]="form.image_prompt"></label>
+      <input type="file" class="form-control-file" id="file" accept="image/*"
+             (change)="onFileChanged($event)" [disabled]="api.loading">
+    </div>
+    <div class="form-group">
+      <small>
+        Πατώντας Αποστολή, αποδέχεστε τους <a href="/tos" target="_blank">όρους χρήσης</a> και την
+        <a href="/privacy" target="_blank">πολιτική απορρήτου</a> του xomologisou.gr<span *ngIf="!form.terms">.</span>
+        <span *ngIf="form.terms"> και της σελίδας <span [innerText]="facebookName"></span>.</span>
+      </small>
+    </div>
+    <div class="bottom">
+      <div class="buttons ml-auto">
+        <button type="submit" class="btn btn-success" [disabled]="hasError() || api.loading">
+          <i class="fas fa-paper-plane"></i> Αποστολή
+        </button>
+        <button type="button" class="btn btn-dark ml-2" (click)="search()" [disabled]="api.loading">
+          <i class="fas fa-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</form>

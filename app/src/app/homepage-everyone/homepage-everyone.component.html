@@ -1,0 +1,39 @@
+<app-homepage-navigation></app-homepage-navigation>
+
+<div class="jumbotron jumbotron-fluid jumbotron-bg">
+  <section class="container text-center">
+    <h3>xomologisou.gr</h3>
+    <p class="lead mb-0">Οι φόρμες ανομολογήτων όπως πρέπει να είναι! Απλές, λιτές, και
+      <span class="text-danger">απόρρητες</span>.
+    </p>
+  </section>
+</div>
+<div class="jumbotron jumbotron-fluid">
+  <section class="container">
+    <div class="row justify-content-center p-4 p-sm-0">
+      <div class="col-12 text-center mb-3">
+        <h5>Οι σελίδες που μας εμπιστεύονται μέχρι σήμερα:</h5>
+      </div>
+      <div class="col-4 col-sm-2 col-lg-1 mb-2" *ngFor="let carrier of carriers">
+        <a [href]="'/' + carrier.id" class="p-0 m-0">
+          <img alt="..." class="w-100" src="" [ngbTooltip]="carrier.name" placement="bottom"
+                [src]="'https://graph.facebook.com/v3.1/' + carrier.facebook_page + '/picture?width=164&type=square'">
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="jumbotron jumbotron-fluid jumbotron-bg">
+  <section class="container">
+    <div class="row justify-content-center p-4 p-sm-0">
+      <div class="col-12 text-center mb-3">
+        <h5>Το project ειναι διαθέσιμο στο GitHub!</h5>
+        <a class="lead" href="https://github.com/ender-gr/xomologisou-forms">
+          <i class="fab fa-github"></i> github.com/ender-gr/xomologisou-forms
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<app-homepage-footer></app-homepage-footer>

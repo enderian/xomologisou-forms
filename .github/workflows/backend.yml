@@ -1,0 +1,30 @@
+name: Backend Docker image
+on:
+  push:
+    branches:
+      - main
+      - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Authenticate Font Awesome
+      run: |
+        npm config set "@fortawesome:registry" https://npm.fontawesome.com/
+        npm config set "//npm.fontawesome.com/:_authToken" ${{ secrets.FONTAWESOME_PRO_KEY }}
+    - name: Build application
+      run: make build
+    - name: Login to GitHub Docker Registry
+      run: |
+        echo ${{ secrets.DOCKER_PASSWORD }} | docker login \
+          -u github --password-stdin ${{ secrets.DOCKER_SERVER }}
+    - name: Build the Docker image
+      run: |
+        docker build . --file Dockerfile \
+          --tag ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:$(date +%s) \
+          --tag ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:latest
+    - name: Publishes the image
+      run: |
+        docker push ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:$(date +%s)
+        docker push ${{ secrets.DOCKER_SERVER }}/xomologisou/forms:latest

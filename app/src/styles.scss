@@ -1,0 +1,93 @@
+$primary: #0353a4;
+$secondary: #0353a4;
+
+@import "~bootstrap/scss/bootstrap";
+@import "~@fortawesome/fontawesome-pro/css/all.css";
+
+$link: #d0d0d0;
+$link-dark: #505050;
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+*, :before, :after {
+  border-radius: 0 !important;
+}
+
+body {
+  color: white;
+  background: #23395b no-repeat fixed center;
+  background-size: cover;
+}
+
+hr {
+  border: rgba(27, 28, 54, 0.7) 0.5px solid;
+}
+
+a {
+  &:hover {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  &.xomologisou {
+    color: #be0c3f
+  }
+}
+
+re-captcha {
+  width: 256px;
+}
+
+ins.adsbygoogle {
+  width: 100% !important;
+}
+
+.bg-xomologisou {
+  background: #bb093c;
+}
+
+.buttons:not(:first-child) {
+  align-self: flex-start;
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.dark {
+
+  a {
+    color: $link;
+
+    &:hover {
+      text-decoration: underline;
+      color: inherit;
+    }
+  }
+}
+
+.jumbotron {
+  background: transparent;
+  margin-bottom: 0;
+
+  &.jumbotron-bg {
+    background: rgba(27, 28, 54, 0.7);
+  }
+}
+
+.lead {
+  margin: 0;
+}
+
+@include media-breakpoint-down(sm) {
+
+  .bottom {
+    flex-direction: column-reverse;
+
+    .buttons:not(:first-child) {
+      margin-bottom: 1rem;
+    }
+  }
+}
