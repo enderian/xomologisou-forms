@@ -8,6 +8,9 @@ xomologisou.gr -  forms
 This project is the customer-facing side of the xomologisou app, a popular Greek application
 that handles confesessions for Facebook confession pages. :secret:
 
+It's development was on-going around 2018-early 2019, with only subsequent patches being applied to fix
+stuff that needed attention. _(The git history has been compacted into the first commit.)_
+
 The managing software is located in a different repo, and will be published at a later time.
 
 ## Structure
