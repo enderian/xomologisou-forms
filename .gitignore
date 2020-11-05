@@ -1,6 +1,13 @@
+# Editors
 .idea
+.vscode
 *.iml
+
+# Node stuff
 node_modules
+yarn-error.log
+
+# Build related stuff
 /*.json
 /static
 /forms
