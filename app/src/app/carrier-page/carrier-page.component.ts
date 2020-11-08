@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer2, ViewChild, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, Renderer2, ViewChild, ViewEncapsulation, isDevMode} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../api/api.service";
 import {Title} from "@angular/platform-browser";
@@ -36,6 +36,29 @@ export class CarrierPage implements OnInit {
 
   initialize(carrier: string) {
     this.carrier = carrier;
+    if (isDevMode && carrier === 'test') {
+      this.response = {
+        "form": {
+          "enabled": true,
+          "title": "Test Carrier",
+          "subtitle": "",
+          "terms": "Some page terms.",
+          "secret_prompt": "Write your secret.",
+          "image_prompt": "Input the images.",
+          "sent_message": "",
+          "background_url": "",
+          "dark": true,
+          "accepts_image": true,
+          "custom_css": "",
+          "option_sets": new Map()
+        },
+        "facebook_id": "418649748634528",
+        "facebook_name": "ender.gr"
+      };
+      this.titleService.setTitle( 'Test Carrier' );
+      return;
+    };
+
     this.api.getForm(this.carrier).subscribe(data => {
       if (data.error) {
         this.router.navigate(['error', data.error], { skipLocationChange: true }).then();
