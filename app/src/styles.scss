@@ -1,5 +1,4 @@
 $primary: #0353a4;
-$secondary: #0353a4;
 
 @import "~bootstrap/scss/bootstrap";
 @import "~@fortawesome/fontawesome-pro/css/all.css";
@@ -36,24 +35,12 @@ a {
   }
 }
 
-re-captcha {
-  width: 256px;
-}
-
-ins.adsbygoogle {
-  width: 100% !important;
-}
-
 .bg-xomologisou {
   background: #bb093c;
 }
 
 .buttons:not(:first-child) {
   align-self: flex-start;
-}
-
-.card-body {
-  padding: 1.5rem;
 }
 
 .dark {
