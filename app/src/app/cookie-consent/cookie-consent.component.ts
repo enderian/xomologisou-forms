@@ -7,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class CookieConsentComponent {
 
-  @Output() select = new EventEmitter<string>();
+  @Output() select = new EventEmitter<boolean>();
 
   constructor() { }
 
