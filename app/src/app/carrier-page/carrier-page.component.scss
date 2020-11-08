@@ -24,7 +24,7 @@
   justify-content: center;
   flex-direction: row;
 
-  .card {
+  .container > * {
     color: black;
     margin: 15px 0;
   }
@@ -41,12 +41,14 @@
     background: rgba(.75, .75, .75, .75);
   }
   .card {
-    border: 1px solid rgba(0, 0, 0, 0.9);
+    border: none;
     color: white;
   }
   .card-header, .card-footer {
     color: white !important;
     background: #4b4b4b;
+    border-bottom: none;
+    border-top: none;
   }
   .card-body {
     background: #5f5f5f;

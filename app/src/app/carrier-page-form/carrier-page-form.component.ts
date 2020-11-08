@@ -1,4 +1,4 @@
-import {Component, Host, Input} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, Host, Input, ViewChild} from '@angular/core';
 import {ApiService} from "../api/api.service";
 import {Form} from "../api/form";
 
@@ -13,20 +13,36 @@ const SITE_KEY = '6LdrTsAUAAAAAGMnEouh7S28CZAZ5jF7kakdKv8J';
   templateUrl: './carrier-page-form.component.html',
   styleUrls: [ './carrier-page-form.component.scss' ]
 })
-export class CarrierPageForm {
+export class CarrierPageForm implements AfterViewInit {
 
   constructor(@Host() private page: CarrierPage, public api: ApiService) { }
 
+  @ViewChild('recaptcha', { static: false }) recaptchaBadge: ElementRef;
   @Input() form: Form;
   @Input() carrier: string;
   @Input() facebookName: string;
 
+  clientId: string;
   error: string;
   secret: any = {
     content: "",
     options: {},
   };
   secretImage: any = null;
+
+  ngAfterViewInit() {
+    grecaptcha.ready(() => {
+      this.clientId = grecaptcha.render(
+        this.recaptchaBadge.nativeElement,
+        {
+          sitekey: SITE_KEY,
+          theme: this.form.dark ? 'dark' : 'light',
+          badge: 'inline',
+          size: 'invisible'
+        }
+      );
+    });
+  }
 
   hasError(): boolean {
     return !this.secret.content.trim() && !this.secretImage
@@ -46,7 +62,7 @@ export class CarrierPageForm {
 
   submit() {
     this.api.loading = true;
-    grecaptcha.execute(SITE_KEY, {action: 'form'}).then((token: string) => {
+    grecaptcha.execute(this.clientId, {action: 'form'}).then((token: string) => {
 
       const uploadData = new FormData();
       if (this.secretImage) {

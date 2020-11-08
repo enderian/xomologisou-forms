@@ -3,7 +3,7 @@
   <div class="form-group">
     <label for="content" [innerText]="form.secret_prompt"></label>
     <textarea class="form-control" id="content" name="content"
-              [(ngModel)]="secret.content" [disabled]="api.loading" rows="3" maxlength="2000"></textarea>
+              [(ngModel)]="secret.content" [disabled]="api.loading" rows="5" maxlength="2500"></textarea>
   </div>
   <div *ngIf="form">
     <div class="form-group" *ngFor="let id of optionSetsKeys()">
@@ -21,6 +21,9 @@
       <label for="file" [innerText]="form.image_prompt"></label>
       <input type="file" class="form-control-file" id="file" accept="image/*"
              (change)="onFileChanged($event)" [disabled]="api.loading">
+    </div>
+    <div class="form-group">
+      <div #recaptcha></div>
     </div>
     <div class="form-group">
       <small>
