@@ -10,7 +10,6 @@ const CONSENT_VERSION = 1;
 })
 export class AppComponent implements OnInit {
 
-
   consent: string | null;
 
   ngOnInit() {
@@ -18,6 +17,8 @@ export class AppComponent implements OnInit {
     window['ga-disable-G-25B5EM0873'] = this.consent === '0';
 
     gtag('js', new Date());
+    gtag('set', 'allow_google_signals', this.consent === '1');
+    gtag('set', 'allow_ad_personalization_signals', this.consent === '1');
     gtag('config', 'G-25B5EM0873');
   }
 
