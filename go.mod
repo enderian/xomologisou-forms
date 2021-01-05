@@ -16,7 +16,7 @@ require (
 	github.com/onsi/ginkgo v1.7.0 // indirect
 	github.com/onsi/gomega v1.4.3 // indirect
 	github.com/ugorji/go/codec v0.0.0-20190204201341-e444a5086c43 // indirect
-	github.com/valyala/fasthttp v1.2.0
+	github.com/valyala/fasthttp v1.19.0
 	google.golang.org/api v0.1.0
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
