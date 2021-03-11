@@ -11,7 +11,7 @@ require (
 	github.com/ghodss/yaml v1.0.0 // indirect
 	github.com/gin-contrib/sse v0.0.0-20190125020943-a7658810eb74 // indirect
 	github.com/gin-gonic/gin v1.3.0
-	github.com/go-pg/pg v8.0.6+incompatible
+	github.com/go-pg/pg v8.0.7+incompatible
 	github.com/golang/lint v0.0.0-20180702182130-06c8688daad7 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.5.0 // indirect
 	github.com/json-iterator/go v1.1.5 // indirect
