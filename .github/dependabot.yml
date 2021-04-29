@@ -1,0 +1,35 @@
+version: 2
+updates:
+- package-ecosystem: gomod
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: google.golang.org/api
+    versions:
+    - 0.37.0
+    - 0.38.0
+    - 0.39.0
+    - 0.40.0
+    - 0.41.0
+    - 0.42.0
+    - 0.43.0
+    - 0.44.0
+  - dependency-name: github.com/valyala/fasthttp
+    versions:
+    - 1.19.0
+    - 1.20.0
+    - 1.21.0
+    - 1.22.0
+    - 1.23.0
+  - dependency-name: cloud.google.com/go
+    versions:
+    - 0.75.0
+    - 0.76.0
+    - 0.77.0
+    - 0.78.0
+    - 0.80.0
+  - dependency-name: github.com/gin-gonic/gin
+    versions:
+    - 1.6.3
