@@ -3,7 +3,7 @@ module github.com/ender-gr/xomologisou-forms
 go 1.13
 
 require (
-	cloud.google.com/go v0.79.0
+	cloud.google.com/go v0.84.0
 	firebase.google.com/go v3.6.0+incompatible
 	git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999 // indirect
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
@@ -27,7 +27,7 @@ require (
 	github.com/prometheus/procfs v0.0.0-20180725123919-05ee40e3a273 // indirect
 	github.com/ugorji/go/codec v0.0.0-20190204201341-e444a5086c43 // indirect
 	github.com/valyala/fasthttp v1.2.0
-	google.golang.org/api v0.41.0
+	google.golang.org/api v0.50.0
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
 	gopkg.in/go-playground/validator.v8 v8.18.2 // indirect
 	gopkg.in/yaml.v2 v2.2.2
