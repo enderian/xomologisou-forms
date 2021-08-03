@@ -32,10 +32,6 @@ jobs:
           ${{ runner.os }}-go-
     - name: Build application
       run: make build
-    - name: Login to GitHub Docker Registry
-      run: |
-        echo ${{ secrets.DOCKER_PASSWORD }} | docker login \
-          -u github --password-stdin ${{ secrets.DOCKER_SERVER }}
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile \
