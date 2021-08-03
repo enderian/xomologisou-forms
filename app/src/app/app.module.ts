@@ -7,11 +7,8 @@ import {AppComponent} from './app.component';
 import {CarrierPage} from './carrier-page/carrier-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ApiService} from "./api/api.service";
+import {RedirectGuard} from "./redirect.guard";
 import {FormsModule} from "@angular/forms";
-
-import {HomepageEveryoneComponent} from './homepage-everyone/homepage-everyone.component';
-import {HomepagePagesComponent} from './homepage-pages/homepage-pages.component';
-import {HomepageNavigationComponent} from './homepage-navigation/homepage-navigation.component';
 
 import {CarrierPageForm} from './carrier-page-form/carrier-page-form.component';
 import {CarrierPageFormSuccess} from './carrier-page-form-success/carrier-page-form-success.component';
@@ -20,7 +17,6 @@ import {ErrorComponent} from './error/error.component';
 import {ApiInterceptor} from "./api/api.interceptor";
 import {PrivacyComponent} from './privacy/privacy.component';
 import {TosComponent} from './tos/tos.component';
-import {HomepageFooterComponent} from './homepage-footer/homepage-footer.component';
 import {CarrierPageTerms} from './carrier-page-terms/carrier-page-terms.component';
 import {LinkifyPipe} from './linkify.pipe';
 import {CarrierPageReport} from "./carrier-page-report/carrier-page-report.component";
@@ -31,25 +27,24 @@ import { CookieConsentComponent } from './cookie-consent/cookie-consent.componen
 const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'error', component: ErrorComponent},
-  {path: 'home', component: HomepageEveryoneComponent},
-  {path: 'page', component: HomepagePagesComponent},
   {path: 'privacy', component: PrivacyComponent},
   {path: 'tos', component: TosComponent},
-
   {path: 'ntua', component: NtuaComponent},
-
   {path: ':carrier', component: CarrierPage},
-  {path: '**', redirectTo: 'home'},
+  {
+    path: '**',
+    canActivate: [RedirectGuard],
+    component: RedirectGuard,
+    data: {
+      externalUrl: 'https://xomologisou.gr/exit'
+    }
+  }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     ErrorComponent,
-    HomepageEveryoneComponent,
-    HomepagePagesComponent,
-    HomepageNavigationComponent,
-    HomepageFooterComponent,
     CarrierPage,
     CarrierPageForm,
     CarrierPageFormSuccess,
@@ -71,6 +66,7 @@ const appRoutes: Routes = [
   ],
   providers: [
     ApiService,
+    RedirectGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ApiInterceptor,
