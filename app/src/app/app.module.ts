@@ -25,7 +25,14 @@ import { NtuaComponent } from './static/ntua/ntua.component';
 import { CookieConsentComponent } from './cookie-consent/cookie-consent.component';
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: '',
+    canActivate: [RedirectGuard],
+    component: RedirectGuard,
+    data: {
+      externalUrl: 'https://xomologisou.gr/exit'
+    }
+  },
   {path: 'error', component: ErrorComponent},
   {path: 'privacy', component: PrivacyComponent},
   {path: 'tos', component: TosComponent},
