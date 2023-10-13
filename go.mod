@@ -4,7 +4,7 @@ go 1.13
 
 require (
 	cloud.google.com/go v0.79.0
-	firebase.google.com/go v3.6.0+incompatible
+	firebase.google.com/go v3.13.0+incompatible
 	git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999 // indirect
 	github.com/beorn7/perks v0.0.0-20180321164747-3a771d992973 // indirect
 	github.com/ender-gr/xomologisou-common v0.0.0-20201104221126-15dc5364f02a
